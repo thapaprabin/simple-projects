@@ -1,0 +1,32 @@
+def calculator():
+
+    print("A simple example of calculator ")
+    print("Operations : +,-,/,* ")
+
+    num1 = float(input("Enter first number"))
+    operator = input("Enter the operator :")
+    num2 = float(input("enter second number"))
+
+    if operator == '+':
+        result = num1 + num2
+
+    elif operator == '/':
+        if num2 !=0:
+            result = num1/num2
+
+        else:
+            return "Error !"
+
+    elif operator == '-':
+        result = num1 -num2
+
+    elif operator == '*':
+        result = num1*num2
+
+    else :
+        return "Invalid operator "
+
+    return f"result : {result}"
+
+print(calculator())
+

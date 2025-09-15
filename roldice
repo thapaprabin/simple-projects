@@ -1,0 +1,20 @@
+import random
+
+print("D I C E   R O L L E R  GAME ")
+
+def roll_dice():
+
+    return random.randint(1,6)
+
+while True:
+
+    user = input(" Press enter to roll the dice (or q to quit the game ")
+    if user.lower() =='q':
+        break #exit the loop if the user inputs q 
+    roll=roll_dice()
+
+    print(f"congratulations !You rolled number { roll }")
+
+    again = input("Roll again ? (y/n):").lower()
+    if again != "y":
+        break
