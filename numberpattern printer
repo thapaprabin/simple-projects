@@ -1,0 +1,53 @@
+'''def pyramid(rows):
+    #By using this function we print a pyramid pattern 
+    #rows(int) is the number of rows in the pyramid
+
+    #outerloop
+    for i in range(1,rows+1): #iterate from 1 to total number of rows
+        #print leading spaces for pyramid shape " "
+        #number of spaces decreases as i increases
+        #after every loop rows-i calculates the spaces needed before numbers
+         #end="" prevents newline after spaces
+        print("" * (rows+1),end="")
+        #j here is in inner loop inside i loop 
+        #also numbers go from 1 to the  current row number i
+        for j in range (1,i+1):
+         
+         print(j,end=" ") #prints number followed by space,no newline
+
+
+        print() #move to the next line after printing '''
+
+
+def diamond(rows):
+    # defining a function to create a diamond shaped pattern
+   def print_diamond_pattern(rows):
+    """
+    Print a diamond pattern with numbers where each row contains numbers in sequence.
+    
+    Parameters:
+    rows (int): Number of rows for the upper half of the diamond
+    """
+    # Upper half of the diamond (including middle row)
+    for i in range(1, rows + 1):
+        # Print leading spaces - decreases as we go down
+        print(" " * (rows - i), end="")
+        # Print numbers from 1 to current row number
+        for j in range(1, i + 1):
+            print(j, end=" ")
+        print()  # New line after each row
+    
+    # Lower half of the diamond (excluding middle row)
+    for i in range(rows - 1, 0, -1):  # Count downward from (rows-1) to 1
+        # Print leading spaces - increases as we go down
+        print(" " * (rows - i), end="")
+        # Print numbers from 1 to current row number
+        for j in range(1, i + 1):
+            print(j, end=" ")
+        print()  # New line after each row
+   
+   
+if __name__ == "__main__":
+    #print("Simple pyramid :")
+   # pyramid(5)
+   diamond(5)
