@@ -1,0 +1,51 @@
+# lets create a hangman game 
+import random # this is required to select random word from the list we have created as words
+#random is a module 
+
+def hangman(): #function defination function name is hangman(paramaters)
+
+    #words here is a list containing different words 
+    words=[ 'python',"algorithm","computer","loop","concept","logic"]
+    word = random.choice(words) # word is a variable random.choice will select random words from words
+    guessed_letters =[] # if i guess any letter at a time it stores the letter 
+    attempts=6 #this is the number of attempts allowed to the player
+
+    print("Welcome to hangman ") #welcome message 
+    print(" _ " * len(word)) #if i have a word of 4 letters 
+    #len will calculate the length of the word and provides underscores 
+    #to each letter
+
+# this loop will continue until attempts
+    while attempts > 0:
+        guess = input("\n Guess a letter :").lower() # take input from the user and convert to lowercase
+   
+        if guess in guessed_letters: #check if the letter is already guessed 
+            print("You already guessed that letter ")
+            continue #skip the rest of the loop and start over 
+        guessed_letters.append(guess) # append will add the guessed letters
+
+        if guess in word: # check if the guessed lelstter is in the word 
+            print("Good guess")
+        else:
+            attempts -=1 # if guess is right it shows good guess otherwise it decreases the atttempts 
+            print(f"wrong ! {attempts} attempts remaining")
+        #build a string that displys progress in the guessed words 
+        display = ''
+        for letter in word: #displays correctly guessed letters
+            if letter in guessed_letters:
+                display +=letter +''
+            else: #else shows underscore only 
+                display+= '_'
+
+        print(display)
+
+        if '_' not in display: # if it finds no underscores is displays congratulations
+            print("Congratulation. You won !!")
+            return#exit the function
+     # if run out of attempts reveal the word and game over   
+    print(f" Game over ! The word was {word}")
+#start the game by calling the function
+hangman()
+
+
+            
