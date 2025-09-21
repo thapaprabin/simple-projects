@@ -1,0 +1,101 @@
+'''# lets start with defining a function
+def temperature_converter():
+    print("Temperature Converter ")
+    print("1. Celsius to Fahrenheit")
+    print("2. Fahrenheit to Celcius")
+    print("3. Celcius to Kelvin")
+    print("4. Kelvin to Celsius")
+    choice = input("Choose conversion (1-4):")
+    #lets validate the choice options 
+    #what we here do i check if the choice is valid or not 
+    if choice not in ['1','2','3','4']:
+        print("Invlaid choice ! Program terminated .")
+        return
+
+    source_units = {'1':'celsius','2':'fahrenheit','4':'kelvin','3':'celsius'}
+    #this source unit is created so that user is able to know which type of temperature to enter.
+    # f-string helps to print this 
+    #this concept is known as dictionary /dictionary mapping 
+
+    try :
+         
+        temp=float(input(f"Enter temperature in {source_units[choice]} : "))
+
+        if choice=='1':
+            result=(temp*9/5)+32
+            print(f"{temp} Celsius = {result:.2f}Fahrenheit")
+        elif choice == '2':
+            result=(temp -32)*5/9
+            print(f"{temp} fahrenheit = {result:.2f} celsius")
+        elif choice == '3':
+            result=temp + 273
+            print(f"{temp}celsius = {result:.2f} kelvin")
+        elif choice =='4':
+            result=temp-273
+            print(f"{temp}kelvin = {result:.2f} celsius")
+        else :
+            print("Invalid choice !")
+    
+    except ValueError:
+        print(" Please enter a valid number. ")
+
+temperature_converter()'''
+
+#scissor paper rock 
+# As scissor paper rock is a luck game we import random to play against the computer 
+import random
+
+def game():
+    choices=["rock","paper","scissor"]#we have list of 3 choices 
+
+    #the score of the user and computer is 0 at first 
+    user_score=0
+    computer_score=0
+
+    #lets print a game header and rules 
+    print(" Rock Paper Scissors Game ! \n Best of 3 rounds wins the game ")
+
+    #as we have 3 rounds only the range is 3.main game loop
+    for round in range(3):
+        print(f"\n Round {round +1 }:")
+
+        user_choice = input("Choose Rock Paper or Scissor :").lower()
+        #this .lower() takes user choice and covert to lowercase 
+
+        if user_choice not in choices:
+            print("Invalid choice.Computer gets a point.\nPlease,Try again ")
+            computer_score +=1 # 1 point to computer for invalid choice 
+            continue # skip the rest line and move to next round
+
+        computer_choice = random.choice(choices)
+        print(f"Computer choose :{computer_choice}")
+
+        if user_choice==computer_choice:#this condition can arrive 
+
+            print("Its a tie !")
+
+        elif(user_choice=='rock' and computer_choice=='scissor') or \
+            (user_choice == 'paper' and computer_choice == 'rock') or \
+            (user_choice == 'scissors' and computer_choice == 'paper'):
+
+            print("Congratulations.You win this round.")
+            user_score +=1
+        else:
+            print("Computer won this round.")
+            computer_score +=1
+    #after 3 consequetive rounds .
+    print(f"Final score - You ={user_score},Computer ={computer_score}")
+
+    #lets determine overall winner 
+    if user_score>computer_score:
+        print("You are the winner .")
+    elif user_score<computer_score:
+        print("You loose .computer win.")
+    else:
+        print("It's a tie ")
+        
+
+
+
+game()
+
