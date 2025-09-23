@@ -1,0 +1,68 @@
+# a calculator program with memory to store the historical calculations 
+def calculator():
+    memory = 0  # memory is a variable declared zero.
+                # it will store the recent calculations performed 
+    history = []  # [history is a list,that stores the historical calculations]
+
+    while True:
+        print("CALCULATOR WITH MEMORY.")
+        print('1. Subtraction')
+        print('2. Division')
+        print('3. Addition')
+        print('4. Multiply')
+        print("5. Show memory")
+        print("6. Clear Memory")
+        print("7. Show History")
+        print("8. Exit")
+
+        choice = input("Enter the options(1-8): ")
+        if choice == '8':
+            print("Exit")
+            return
+
+        if choice in ['1', '2', '3', '4']:
+            try:
+                num1 = float(input("enter first number: "))
+                num2 = float(input("enter second number: "))
+
+                if choice == '1':
+                    result = num1 - num2
+                    operation=f"{num1} - {num2} = {result}" #so to store the result we here created an operation string
+                elif choice == '2':
+                    if num2 == 0:
+                        print("Division by zero is inf.")
+                        break
+                    result = num1 / num2
+                    operation=f"{num1} / {num2} = {result}"
+                elif choice == '3':
+                    result = num1 + num2
+                    operation=f"{num1} + {num2} = {result}"
+                elif choice == '4':
+                    result = num1 * num2
+                    operation=f"{num1} * {num2} = {result}"
+                
+                print(f"Result = {result}")# provides the output after the calculation
+
+                memory = result #store the value of the recent result in the memory
+                history.append(operation)
+                break # history is a list append lets to add all the values in the operation string 
+
+            except ValueError:
+                print("Invalid.non-numerical values found.")
+        
+        elif choice == '5':
+            print(f" Memory = {memory}") #display the value of the current memory 
+
+        elif choice =='6':#if the user choose to clear the memory the value of the memory is zero
+            memory = 0
+            print("Memory is cleared.")
+
+        
+        elif choice =='7': #this is for showing history 
+            print("Calculation History :")
+            #here we need loop to go through all the calculation stored in history list 
+            for calc in history:
+                print(f"{calc}")
+
+if __name__ == "__main__":
+    calculator()
